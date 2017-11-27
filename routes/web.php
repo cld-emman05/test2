@@ -12,27 +12,19 @@
 */
 
 /* For all users */
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'DashboardController@index');
 
-Route::get('/profile', function () {
-    return view('profile');
-});
+Route::get('/profile', 'UsersController@index');
 
 
 /* For all customers */
-Route::get('/create-order', function () {
-    return view('create-order');
-});
+Route::get('/create-order', 'OrdersController@create');
 
-Route::get('/confirm-quotation', function () {
-    return view('confirm-quotation');
-});
+Route::get('/confirm-quotation', 'QuotationsController@index');
 
-Route::get('/view-invoice', function () {
-    return view('view-invoice');
-});
+Route::get('/invoice-list', 'InvoicesController@index');
+
+Route::get('/view-invoice', 'InvoicesController@show');
 
 Route::get('/order-history', function () {
     return view('order-history');
@@ -40,9 +32,11 @@ Route::get('/order-history', function () {
 
 /* For all sales agents */
 
-Route::get('/manage-order', function () {
-    return view('manage-order');
-});
+Route::get('/order-lists', 'OrdersController@index');
+
+Route::get('/manage-order', 'OrdersController@show');
+
+Route::get('/manage-order/edit', 'OrdersController@edit');
 
 
 

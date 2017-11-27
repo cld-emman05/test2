@@ -29,14 +29,16 @@ $factory->define(App\Orders::class, function (Faker $faker) {
     static $password;
 
     return [
-        'id' => $faker->name,
-        'customer_id' => $faker->name,
-        'sales_agent_id' => $faker->name,
-        'quantity' => $faker->text,
-        'size_type_id' => $faker->paragraph,
-        'page_count' => $faker->text,
-        'binding_type_id' => $faker->text,
-        'paper_type_id' => $faker->paragraph
+        'id' => $faker->ean8,
+        'customer_id' => function(){
+          return factory(App\User::class)->create()->id;
+        },
+        'sales_agent_id' => $faker->ean8,
+        'quantity' => $faker->ean8,
+        'size_type_id' => $faker->ean8,
+        'page_count' => $faker->ean8,
+        'binding_type_id' => $faker->ean8,
+        'paper_type_id' => $faker->ean8
     ];
 });
 
